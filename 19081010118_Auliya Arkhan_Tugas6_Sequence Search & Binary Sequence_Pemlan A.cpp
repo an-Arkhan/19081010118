@@ -133,6 +133,38 @@ void hapus_mahasiswa(){
 	return;
 }
 
+void bnsequence(){
+	printf("\n\n===================\n");
+	printf("Binary Sequence\n");
+	char s_npm[15];
+	FILE *fp;
+	int found=0;
+	int data[100]=fopen("Data Mahasiswa.txt", "ab+");
+	int l,r,m;
+	int n=9;
+	printf("Inputkan NPM : "); fflush(stdin);
+	gets(s_npm);
+	l=0;
+	r=n-1;
+	int ktm=0;
+	fp=fopen("Data_Mahasiswa.txt", "ab+");
+	while(l<=r && ktm==0){
+		m=(l+r)/2;
+		printf("data tengah : %d\n", m);
+		if(data[m]==s_npm) ktm=1;
+		else if (s_npm < data[m]){
+			printf("cari dikiri\n");
+			r=m-1;
+		}
+		else{
+			l=m+1;
+			printf("cari dikanan\n");
+		}
+	}
+	if(ktm==1) printf("data ada\n");
+	else printf("data tidak ada\n");
+}
+
 void bnseq(){
 	int data[100] = {3, 9, 11, 12, 15, 17, 23, 31, 35};
 	int l,r,m;
@@ -189,7 +221,7 @@ int main(){
 				hapus_mahasiswa();
 				break;
 			case 5:
-				bnseq();
+				bnsequence();
 				break;
 			default:
 				printf("\nMaaf nilai tidak valid");
